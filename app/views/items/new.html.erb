@@ -1,0 +1,133 @@
+<!-- Validation failure messages -->
+
+<% if @item.errors.any? %>
+  <% @item.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add Item</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/create_item" method="post" class="form-horizontal" enctype="multipart/form-data">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+
+
+          <!-- Label and input for category_id -->
+          <div class="form-group">
+            <label for="category_id" class="col-sm-2 control-label">
+              Category
+            </label>
+            <div class="col-sm-10" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <li id="drop1" class="dropdown open">
+            <a id="browse" class="btn dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Choose Category <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li><a tabindex="-1" href="index.html"><%= @item.category_id  %></a></li>
+            <li class="divider"></li>
+            <li><a tabindex="-1" href="/categories/new">New Category</a></li>
+            <li class="divider"></li>
+            </ul>
+            </li>
+              <input type="text" id="category_id" name="category_id" placeholder="Category" class="form-control" value="<%= @item.category_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for name -->
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">
+              Name
+            </label>
+            <div class="col-sm-10">
+              <textarea id="name" name="name" placeholder="Name" class="form-control" rows="1"><%= @item.name %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for picture -->
+          <div class="form-group">
+            <label for="picture2" class="col-sm-2 control-label">
+              Picture
+            </label>
+            <div class="col-sm-10">
+              <input type="file" id="picture2" name="picture2" placeholder="Picture2" class="form-control" value="<%= @item.picture2 %>">
+            </div>
+          </div>
+
+
+
+          <!-- Label and input for color -->
+          <div class="form-group">
+            <label for="color" class="col-sm-2 control-label">
+              Color
+            </label>
+            <div class="col-sm-10">
+              <textarea id="color" name="color" placeholder="Color" class="form-control" rows="1"><%= @item.color %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for price -->
+          <div class="form-group">
+            <label for="price" class="col-sm-2 control-label">
+              Price($)
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @item.price %>">
+            </div>
+          </div>
+
+          <!-- Label and input for quantity -->
+          <div class="form-group">
+            <label for="quantity" class="col-sm-2 control-label">
+              Quantity
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="quantity" name="quantity" placeholder="Quantity" class="form-control" value="<%= @item.quantity %>">
+            </div>
+          </div>
+
+          <!-- Label and input for model_sn -->
+          <div class="form-group">
+            <label for="model_sn" class="col-sm-2 control-label">
+              Model sn
+            </label>
+            <div class="col-sm-10">
+              <textarea id="model_sn" name="model_sn" placeholder="Model sn" class="form-control" rows="1""><%= @item.model_sn %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for notes -->
+          <div class="form-group">
+            <label for="notes" class="col-sm-2 control-label">
+              Notes
+            </label>
+            <div class="col-sm-10">
+              <textarea id="notes" name="notes" placeholder="Notes" class="form-control" rows="3"><%= @item.notes %></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-success">
+                Create Item
+              </button>
+              or
+              <a href="/items">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->

@@ -1,0 +1,62 @@
+class ItemsController < ApplicationController
+  def index
+    @items = Item.all
+  end
+
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  def new
+    @item = Item.new
+  end
+
+  def create
+    @item = Item.new
+    @item.category_id = params[:category_id]
+    @item.picture2 = params[:picture2]
+    @item.notes = params[:notes]
+    @item.color = params[:color]
+    @item.price = params[:price]
+    @item.quantity = params[:quantity]
+    @item.model_sn = params[:model_sn]
+    @item.name = params[:name]
+
+    if @item.save
+      redirect_to "/items", :notice => "Item created successfully."
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+
+    @item.category_id = params[:category_id]
+    @item.picture2 = params[:picture2]
+    @item.notes = params[:notes]
+    @item.color = params[:color]
+    @item.price = params[:price]
+    @item.quantity = params[:quantity]
+    @item.model_sn = params[:model_sn]
+    @item.name = params[:name]
+
+    if @item.save
+      redirect_to "/items", :notice => "Item updated successfully."
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+
+    @item.destroy
+
+    redirect_to "/items", :notice => "Item deleted."
+  end
+end

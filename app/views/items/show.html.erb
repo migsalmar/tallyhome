@@ -1,0 +1,62 @@
+<!-- Responsive panel example-->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @item.name %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+        <div class="col-md-4">
+            <dl class="dl-horizontal">
+
+              <dt><img src=<%= @item.picture2 %> class = "img-responsive"></dt>
+            </dl>
+        </div>
+
+          <div class="col-md-8">
+            <dl class="dl-horizontal">
+              <dt>Category</dt>
+              <dd><%= @item.category_id %></dd>
+
+              <dt>Notes</dt>
+              <dd><%= @item.notes %></dd>
+
+              <dt>Color</dt>
+              <dd><%= @item.color %></dd>
+
+              <dt>Price</dt>
+              <dd>$<%= @item.price %></dd>
+
+              <dt>Quantity</dt>
+              <dd><%= @item.quantity %></dd>
+
+              <dt>Model sn</dt>
+              <dd><%= @item.model_sn %></dd>
+
+              <dt>Name</dt>
+              <dd><%= @item.name %></dd>
+
+            </dl>
+            <div class="btn-group btn-group-justified">
+              <a href="/items" class="btn btn-primary">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+
+              <a href="/items/<%= @item.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+
+              <a href="/delete_item/<%= @item.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->
