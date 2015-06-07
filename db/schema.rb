@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20150605112800) do
 
   create_table "categories", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "picture"
     t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -23,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150605112800) do
 
   create_table "items", force: :cascade do |t|
     t.integer  "category_id"
+    t.string   "picture"
     t.text     "notes"
     t.text     "color"
     t.float    "price"
