@@ -27,7 +27,7 @@
               <dt>Price</dt>
               <dd>$<%= @item.price %></dd>
 
-              <dt>Quantity</dt>
+              <dt>Quantity Owned</dt>
               <dd><%= @item.quantity %></dd>
 
               <dt>Model sn</dt>
@@ -35,6 +35,12 @@
 
               <dt>Notes</dt>
               <dd><%= @item.notes %></dd>
+
+              <dt>Date Created</dt>
+              <dd><%= @item.created_at %></dd>
+
+              <dt>Date Modified</dt>
+              <dd><%= @item.updated_at %></dd>
 
             </dl>
             <div class="btn-group btn-group-justified">
