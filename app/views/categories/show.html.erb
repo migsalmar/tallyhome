@@ -29,11 +29,39 @@
 
       <ul class="list-group">
         <li class="list-group-item list-group-item-success">
-        Items under <%= @category.name %></li>
+        What's in your <%= @category.name %> category</li>
         <% the_id = @category.id%>
         <% items = Item.where(:category_id => the_id)%>
         <% items.each do |item|%>
-          <li class="list-group-item"><%= item.name %><%=item.quantity %></li>
+          <div class="panel-body">
+            <dl>
+              <div class="col-xs-4">
+              <dd><img src=<%= item.picture2 %> class = "img-responsive"></dd>
+              </div>
+
+              <div class="col-xs-4">
+              <dd>$<%= item.price %></dd>
+              </div>
+
+              <div class="col-xs-4">
+              <dd><%= item.quantity %></dd>
+              </div>
+            </dl>
+          </div>
+          <div class="btn-group btn-group-justified">
+          <a href="/items/<%= item.id %>" class="btn btn-secondary">
+            <i class="fa fa-search-plus"></i>
+          </a>
+
+          <a href="/items/<%= item.id %>/edit" class="btn btn-tertiary">
+            <i class="fa fa-edit"></i>
+          </a>
+
+          <a href="/delete_item/<%= item.id %>" class="btn btn-secondary" rel="nofollow">
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </div>
+
         <% end %>
       </ul>
     </div>
