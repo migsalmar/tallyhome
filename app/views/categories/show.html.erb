@@ -21,6 +21,10 @@
             </div>
 
             <div>
+            <h1>
+              Add new items
+            <a href="/items/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+           </h1>
             </div>
 
           </div>
@@ -29,40 +33,51 @@
 
       <ul class="list-group">
         <li class="list-group-item list-group-item-success">
-        What's in your <%= @category.name %> category</li>
-        <% the_id = @category.id%>
-        <% items = Item.where(:category_id => the_id)%>
-        <% items.each do |item|%>
+        These are the items in your <%= @category.name %> category</li>
+        <li class="list-group-item list-group-item-success">
+        Total cost of all items in this category is <%= number_to_currency(@category.items.sum(:price))%></li>
+
+        <% @category.items.each do |item|%>
+        <hr>
           <div class="panel-body">
             <dl>
-              <div class="col-xs-4">
-              <dd><img src=<%= item.picture2 %> class = "img-responsive"></dd>
+              <div class="col-md-3">
+              <dd><img src=<%= item.picture2 %> class = "img-responsive" class ="roundrect"></dd>
               </div>
 
-              <div class="col-xs-4">
-              <dd>$<%= item.price %></dd>
+              <div class="col-md-3">
+              <dd><%= item.name %></dd>
               </div>
 
-              <div class="col-xs-4">
-              <dd><%= item.quantity %></dd>
+              <div class="col-md-3">
+              <dd><%= number_to_currency(item.price) %></dd>
+              </div>
+
+              <div class="col-md-3">
+              <dd>Qty.<%= item.quantity %></dd>
               </div>
             </dl>
           </div>
           <div class="btn-group btn-group-justified">
-          <a href="/items/<%= item.id %>" class="btn btn-secondary">
+          <a href="/items/<%= item.id %>" class="btn btn-primary">
             <i class="fa fa-search-plus"></i>
           </a>
 
-          <a href="/items/<%= item.id %>/edit" class="btn btn-tertiary">
+          <a href="/items/<%= item.id %>/edit" class="btn btn-primary">
             <i class="fa fa-edit"></i>
           </a>
 
-          <a href="/delete_item/<%= item.id %>" class="btn btn-secondary" rel="nofollow">
+          <a href="/delete_item/<%= item.id %>" class="btn btn-primary" rel="nofollow">
             <i class="fa fa-trash-o"></i>
           </a>
         </div>
 
+
         <% end %>
+
+        <dl>
+
+        </dl>
       </ul>
     </div>
   </div>

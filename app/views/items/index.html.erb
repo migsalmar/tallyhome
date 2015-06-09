@@ -1,4 +1,9 @@
 <div class="page-header">
+
+
+  <h4>
+    *Before adding new items, ensure that you have created the categories you need.
+  </h4>
   <h1>
     Items
     <a href="/items/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
@@ -15,9 +20,13 @@
 
 <hr>
 
+<ul class="list-group">
+<li class="list-group-item list-group-item-success">Total cost of all items: <%= number_to_currency(@items.sum(:price)) %></li>
+</ul>
 
 <div class="row isotope-container">
 <% @items.each do |item| %>
+
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -30,24 +39,24 @@
           </div>
 
           <div class="col-md-4">
-          <dd>$<%= item.price %></dd>
+          <dd><%= number_to_currency(item.price) %></dd>
           </div>
 
           <div class="col-md-4">
-          <dd><%= item.quantity %></dd>
+          <dd>Qty.<%= item.quantity %></dd>
           </div>
 
         </dl>
         <div class="btn-group btn-group-justified">
-          <a href="/items/<%= item.id %>" class="btn btn-secondary">
+          <a href="/items/<%= item.id %>" class="btn btn-primary">
             <i class="fa fa-search-plus"></i>
           </a>
 
-          <a href="/items/<%= item.id %>/edit" class="btn btn-tertiary">
+          <a href="/items/<%= item.id %>/edit" class="btn btn-primary">
             <i class="fa fa-edit"></i>
           </a>
 
-          <a href="/delete_item/<%= item.id %>" class="btn btn-secondary" rel="nofollow">
+          <a href="/delete_item/<%= item.id %>" class="btn btn-primary" rel="nofollow">
             <i class="fa fa-trash-o"></i>
           </a>
         </div>

@@ -9,7 +9,7 @@ def check_if_owner
   end
 
   def index
-    @categories = current_user.categories
+    @categories = current_user.categories.order("name ASC")
     # .ransack[params(:id)]
   end
 
@@ -25,7 +25,7 @@ def check_if_owner
     @category = Category.new
     @category.user_id = params[:user_id]
     @category.picture1= params[:picture1]
-    @category.name = params[:name]
+    @category.name = params[:name].upcase
 
     if @category.save
       redirect_to "/categories", :notice => "Category created successfully."

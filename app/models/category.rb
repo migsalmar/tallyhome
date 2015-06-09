@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
 
-  validates :name, :presence => true, :uniqueness => true
+  validates :name, :presence => true, :uniqueness => {:scope => :user_id, :message => "Category already exists"}
 
   has_many :items
   belongs_to :user

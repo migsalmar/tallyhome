@@ -30,7 +30,7 @@
           Category
         </label>
         <div class="col-sm-10">
-          <%= select_tag :category_id, options_from_collection_for_select(Category.all, :id, :name, @item.category_id), :class => "form-control" %>
+          <%= select_tag :category_id, options_from_collection_for_select(current_user.categories, :id, :name, @item.category_id), :class => "form-control" %>
         </div>
       </div>
 
@@ -89,7 +89,7 @@
           <!-- Label and input for model_sn -->
           <div class="form-group">
             <label for="model_sn" class="col-sm-2 control-label">
-              Model sn
+              Model/Serial No.
             </label>
             <div class="col-sm-10">
               <textarea id="model_sn" name="model_sn" placeholder="Model sn" class="form-control" rows="1""><%= @item.model_sn %></textarea>
@@ -112,7 +112,9 @@
                 Create Item
               </button>
               or
-              <a href="/items">Cancel</a>
+
+              <a href="/categories">Cancel</a>
+
             </div>
           </div>
         </form>

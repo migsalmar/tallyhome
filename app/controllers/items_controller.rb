@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+      @items = current_user.items.order("name ASC")
+    # .ransack[params(:id)]
   end
 
   def show
@@ -20,7 +21,7 @@ class ItemsController < ApplicationController
     @item.price = params[:price]
     @item.quantity = params[:quantity]
     @item.model_sn = params[:model_sn]
-    @item.name = params[:name]
+    @item.name = params[:name].upcase
 
     if @item.save
       redirect_to "/items", :notice => "Item created successfully."
