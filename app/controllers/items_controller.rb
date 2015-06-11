@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def index
       @items = current_user.items.order("name ASC")
-    # .ransack[params(:id)]
+
   end
 
   def show
@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
     @item.name = params[:name].upcase
 
     if @item.save
-      redirect_to "/items", :notice => "Item created successfully."
+      redirect_to categories_url,  :notice => "Item created successfully."
     else
       render 'new'
     end
@@ -36,7 +36,6 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-
     @item.category_id = params[:category_id]
     @item.picture2 = params[:picture2]
     @item.notes = params[:notes]
@@ -47,7 +46,7 @@ class ItemsController < ApplicationController
     @item.name = params[:name]
 
     if @item.save
-      redirect_to "/items", :notice => "Item updated successfully."
+      redirect_to categories_url, :notice => "Item updated successfully."
     else
       render 'edit'
     end
@@ -58,6 +57,6 @@ class ItemsController < ApplicationController
 
     @item.destroy
 
-    redirect_to "/items", :notice => "Item deleted."
+    redirect_to categories_url, :notice => "Item deleted."
   end
 end

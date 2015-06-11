@@ -28,7 +28,7 @@
           Category
         </label>
         <div class="col-sm-10">
-          <%= select_tag :category_id, options_from_collection_for_select(Category.all, :id, :name, @item.category_id), :class => "form-control" %>
+          <%= select_tag :category_id, options_from_collection_for_select(current_user.categories, :id, :name, @item.category_id), :class => "form-control" %>
         </div>
       </div>
 
